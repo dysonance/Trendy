@@ -7,7 +7,10 @@ Installation
 ------------
 1. Clone or download the ZIP file.
 2. Unpack the zip file.
-3. Find the unpacked directory and copy the files to your Python path. Otherwise, you can place them in an easily reachable directory and import any of the files individually into your current working Python environment with execfile('/path/to/trendy-master/file.py').
+3. Find the unpacked directory and copy the files to your Python path. Otherwise, you can place them in an easily reachable directory and import any of the files individually into your current working Python environment with
+
+
+    execfile('/path/to/trendy-master/file.py')
 
 Examples
 --------
