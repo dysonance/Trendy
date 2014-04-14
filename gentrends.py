@@ -8,6 +8,7 @@ def gentrends(x, window=1.0/3.0, charts=True, fromdate='1900-01-01',
     charts - boolean, whether or not to print charts to screen
     fromdate - when to start pulling stock data (defaults to all data)
     todate - when to stop pulling stock data (if none, defaults to most recent)
+    log_scale - converts to logarithmic scale
     directory - directory in which data may be found to save on import speed
     """
     # Import packages
