@@ -108,7 +108,6 @@ def minitrends(x, window, fromdate='1900-01-01', todate=None, charts=True,
         plot(xMax, yMax, '-o')
         plot(xMin, yMin, '-o')
         grid(True)
-        title(ticker.upper())
         show()
     # Return arrays of critical points
     return xMax, yMax, xMin, yMin
