@@ -42,9 +42,10 @@ def segtrend(x, segments=2.0, charts=True, fromdate='1900-01-01', todate=None,
                 y = y['Adj Close'][fromdate:todate]
     else:
         y = x
-
-
+    if log_scale:
+        y = np.log(y)  # change to log scale if desired
     # Implement trendlines
+
     segments = int(segments)
     maxima = np.ones(segments)
     minima = np.ones(segments)
@@ -82,7 +83,6 @@ def segtrend(x, segments=2.0, charts=True, fromdate='1900-01-01', todate=None,
 
     # OUTPUT
     grid(True)
-    title(ticker.upper())
     show()
     return x_maxima, maxima, x_minima, minima
 
