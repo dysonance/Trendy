@@ -10,7 +10,9 @@ Installation
 3. Find the unpacked directory and copy the files to your Python path. Otherwise, you can place them in an easily reachable directory and import any of the files individually into your current working Python environment with
 
 
-    execfile('/path/to/trendy-master/file.py')
+        execfile('/path/to/trendy-master/file.py')
+
+I am working on getting this project hosted on the Python Package Index, but for now this at least enables you to start using and gaining familiarity with the algorithms.
 
 Examples
 --------
