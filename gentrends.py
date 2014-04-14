@@ -85,12 +85,10 @@ def gentrends(x, window=1.0/3.0, charts=True, fromdate='1900-01-01',
 
     if charts:
         plot(trends)
-        if type(x) == str:
-            title(x.upper())
         grid()
         show()
 
-    execfile('line_eqn.py')
+    execfile('linetools.py')
     return trends, maxslope, minslope
 
 # Run
