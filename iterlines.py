@@ -72,7 +72,6 @@ def iterlines(x, window, fromdate='1900-01-01', todate=None, charts=True,
         plot(x, y)
         plot(xmax, ymax, 'o')
         plot(xmin, ymin, 'o')
-        title(ticker.upper())
         grid(True)
         show()
 
