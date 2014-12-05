@@ -5,39 +5,40 @@ Numerical trendline Python algorithms for technical analysis of financial securi
 
 Installation
 ------------
-1. Clone or download the ZIP file.
-2. Unpack the zip file.
-3. Find the unpacked directory and copy the files to your Python path. Otherwise, you can place them in an easily reachable directory and import any of the files individually into your current working Python environment with
+1. Clone or download the ZIP file and unpack.
+2. Go to the unpacked directory and copy to your Python path. Alternatively, you can place the trendy.py file in an easily reachable directory and import into your current working Python environment with
+```python
+execfile('/path/to/trendy.py')
+```
+or
+```python
+import trendy
+```
 
-
-        execfile('/path/to/trendy-master/file.py')
-
-I am working on getting this project hosted on the Python Package Index, but for now this at least enables you to start using and gaining familiarity with the algorithms.
+I am still working on getting this project hosted on the Python Package Index, but for now this at least enables you to start using and gaining familiarity with the algorithms.
 
 Examples
 --------
 Once the files have been imported, you can implement them with simple function calls. Here are some examples.
+```python
+# Download Apple price history and save adjusted close prices to numpy array
+import pandas.io.data as pd
+x = pd.DataReader("AAPL", "yahoo")['Adj Close']
 
-This example places general trendlines framing the entire price history of Facebook (ticker: FB).
+# Make some trendlines
+import trendy
 
-    gentrends(x = 'fb')
+# Generate general support/resistance trendlines and show the chart
+# winow < 1 is considered a fraction of the length of the data set
+trendy.gentrends(x, window = 1.0/3, charts = True)
 
-You can change the window period to alter the sensitivity and flexibility of the general trendline function. This example applies the function to LinkedIn (ticker: LNKD) with a window period of 1/2 (half of the length of the price history). Keep in mind that if using a version before Python 3, you will need to specify that the window period is a float with decimals.
+# Generate a series of support/resistance lines by segmenting the price history
+trendy.segtrends(x, segments = 2, charts = True)  # equivalent to gentrends with window of 1/2
+trendy.segtrends(x, segments = 5, charts = True)  # plots several S/R lines
 
-    gentrends(x = 'lnkd', window = 1.0/2.0)
+# Generate smaller support/resistance trendlines to frame price over smaller periods
+trendy.minitrends(x, window = 30, charts = True)
 
-You can also specify window periods of integer values. For example, if LinkedIn has been on the market for 730 trading days, the above example is equivalent to:
-
-    gentrends(x = 'lnkd', window = 365)
-
-If you want trendlines that provide a description of the price movement over smaller timeframes, it may be more useful to use the 'minitrends' function, where smaller window periods may prove more useful.
-
-    minitrends(x = 'lnkd', window = 30)
-
-It is also possible to feed it raw data as a NumPy array instead of a ticker symbol.
-
-    import numpy as np
-    import pandas.io.data as pd
-    lnkd = np.array(pd.DataReader('lnkd', 'yahoo')['Adj Close'])
-    minitrends(x = lnkd, window = 30)
-
+# Iteratively generate trading signals based on maxima/minima in given window
+trendy.iterlines(x, window = 30, charts = True)  # buy at green dots, sell at red dots
+```
